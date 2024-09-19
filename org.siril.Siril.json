@@ -23,22 +23,21 @@
     "modules": [
         {
             "name": "cfitsio",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
             "config-opts": [
-                "--enable-reentrant"
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DUSE_PTHREADS=ON"
             ],
-            "make-args": ["shared"],
             "cleanup": [
-                "/include",
-                "*.a",
-                "*.la",
-                "/lib/pkgconfig"
+                "/bin"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-4.2.0.tar.gz",
                     "disable-http-decompression": true,
-                    "sha256": "eba53d1b3f6e345632bb09a7b752ec7ced3d63ec5153a848380f3880c5d61889"
+                    "url": "https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-4.4.0.tar.gz",
+                    "sha256": "95900cf95ae760839e7cb9678a7b2fad0858d6ac12234f934bd1cb6bfc246ba9"
                 }
             ]
         },
@@ -168,8 +167,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/opencv/opencv/archive/4.7.0.zip",
-                    "sha256": "db6fb5e7dc76829d738fdbcdba11a810c66ca0a4752e531eaf3d793361e96de8"
+                    "url": "https://github.com/opencv/opencv/archive/4.10.0.zip",
+                    "sha256": "3810bca2b1d1c572912df0ac3888126341f3762dfd28e91068c805fb656d0e51"
                 }
             ]
         },
