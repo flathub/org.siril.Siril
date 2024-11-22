@@ -271,12 +271,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.com/free-astro/siril.git",
-                    "tag": "1.2.4",
-                    "commit": "d1d5ea0606a4819c7798e02a85ccbce7975f727d"
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Update-ap-ID-for-flatpak.patch"
+                    "tag": "1.2.5",
+                    "commit": "c7485fc0f472392f42954f574c1ada26a1a15484"
                 }
             ]
         }
