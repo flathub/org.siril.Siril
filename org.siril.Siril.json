@@ -1,7 +1,7 @@
 {
     "app-id": "org.siril.Siril",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "48",
+    "runtime-version": "46",
     "sdk": "org.gnome.Sdk",
     "command": "siril",
     "rename-icon": "org.siril.Siril",
@@ -20,8 +20,7 @@
         /* Needed for gvfs to work */
         "--talk-name=org.gtk.vfs.*",
         "--filesystem=xdg-run/gvfs",
-        "--filesystem=xdg-run/gvfsd",
-        "--unset-env=LD_PRELOAD"
+        "--filesystem=xdg-run/gvfsd"
     ],
     "modules": [
         {
@@ -50,7 +49,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://deb.debian.org/debian/pool/main/g/gtksourceview4/gtksourceview4_4.8.4.orig.tar.xz",
+                    "url": "https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.4.tar.xz",
                     "sha256": "7ec9d18fb283d1f84a3a3eff3b7a72b09a10c9c006597b3fbabbb5958420a87d"
                 }
             ],
@@ -96,56 +95,6 @@
                 "*.a",
                 "/lib/cmake",
                 "/lib/pkgconfig"
-            ]
-        },
-        {
-            "name": "libjxl",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DBUILD_TESTING=OFF",
-                "-DJPEGXL_ENABLE_BENCHMARK=OFF",
-                "-DJPEGXL_ENABLE_DOXYGEN=OFF",
-                "-DJPEGXL_ENABLE_EXAMPLES=OFF",
-                "-DJPEGXL_ENABLE_JNI=OFF",
-                "-DJPEGXL_ENABLE_MANPAGES=OFF",
-                "-DJPEGXL_ENABLE_PLUGINS=OFF",
-                "-DJPEGXL_ENABLE_SJPEG=OFF",
-                "-DJPEGXL_ENABLE_SKCMS=OFF",
-                "-DJPEGXL_ENABLE_TCMALLOC=OFF",
-                "-DJPEGXL_ENABLE_TOOLS=OFF",
-                "-DJPEGXL_FORCE_SYSTEM_BROTLI=ON",
-                "-DJPEGXL_FORCE_SYSTEM_HWY=ON",
-                "-DJPEGXL_FORCE_SYSTEM_LCMS2=ON",
-                "-DJPEGXL_WARNINGS_AS_ERRORS=OFF"
-            ],
-            "modules": [
-                {
-                    "name": "libhwy",
-                    "config-opts": [
-                        "-DBUILD_TESTING=OFF",
-                        "-DBUILD_SHARED_LIBS=OFF",
-                        "-DHWY_ENABLE_EXAMPLES=OFF",
-                        "-DHWY_ENABLE_TESTS=OFF",
-                        "-DHWY_FORCE_STATIC_LIBS=ON"
-                    ],
-                    "buildsystem": "cmake-ninja",
-                    "builddir": true,
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://github.com/google/highway/archive/refs/tags/1.0.2.tar.gz",
-                            "sha256": "e8ef71236ac0d97f12d553ec1ffc5b6375d57b5f0b860c7447dd69b6ed1072db"
-                        }
-                    ]
-                }
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/libjxl/libjxl/archive/refs/tags/v0.7.0.tar.gz",
-                    "sha256": "3114bba1fabb36f6f4adc2632717209aa6f84077bc4e93b420e0d63fa0455c5e"
-                }
             ]
         },
         {
