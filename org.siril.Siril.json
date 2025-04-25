@@ -1,7 +1,7 @@
 {
     "app-id": "org.siril.Siril",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "46",
+    "runtime-version": "48",
     "sdk": "org.gnome.Sdk",
     "command": "siril",
     "rename-icon": "org.siril.Siril",
@@ -64,7 +64,7 @@
         },
         {
             "name": "libgit2",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DBUILD_EXAMPLES=OFF",
                 "-DBUILD_TESTS=OFF",
@@ -372,7 +372,7 @@
         },
         {
             "name": "libxisf",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DUSE_BUNDLED_ZLIB=OFF"
             ],
@@ -394,7 +394,7 @@
              "modules": [
                 {
                     "name": "pugixml",
-                    "buildsystem": "cmake",
+                    "buildsystem": "cmake-ninja",
                     "sources": [
                         {
                             "type": "archive",
