@@ -16,7 +16,7 @@
         "--socket=wayland",
         "--filesystem=host",
         /* For spawning OS-native processes */
-        "--talk-name=org.freedesktop.Flatpak",
+        /*"--talk-name=org.freedesktop.Flatpak", */
         /* Needed for gvfs to work */
         "--talk-name=org.gtk.vfs.*",
         "--filesystem=xdg-run/gvfs",
@@ -380,7 +380,8 @@
                 {
                     "type": "git",
                     "url": "https://gitea.nouspiro.space/nou/libXISF.git",
-                    "branch": "master"
+                    "tag": "v0.2.13",
+                    "commit": "bfba76a39d2651719228841503b3a84cc5820362"
                 }
             ],
             "cleanup": [
