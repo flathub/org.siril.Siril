@@ -1,7 +1,7 @@
 {
     "app-id": "org.siril.Siril",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "46",
+    "runtime-version": "48",
     "sdk": "org.gnome.Sdk",
     "command": "siril",
     "rename-icon": "org.siril.Siril",
@@ -12,13 +12,15 @@
     "finish-args": [
         "--share=ipc",
         "--share=network",
-        "--socket=x11",
+        "--socket=fallback-x11",
+        "--socket=wayland",
         "--filesystem=host",
+        /* For spawning OS-native processes */
+        /*"--talk-name=org.freedesktop.Flatpak", */
         /* Needed for gvfs to work */
         "--talk-name=org.gtk.vfs.*",
         "--filesystem=xdg-run/gvfs",
-        "--filesystem=xdg-run/gvfsd",
-        "--share=network"
+        "--filesystem=xdg-run/gvfsd"
     ],
     "modules": [
         {
@@ -39,6 +41,60 @@
                     "url": "https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-4.4.0.tar.gz",
                     "sha256": "95900cf95ae760839e7cb9678a7b2fad0858d6ac12234f934bd1cb6bfc246ba9"
                 }
+            ]
+        },
+        {
+            "name": "gtksourceview4",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.4.tar.xz",
+                    "sha256": "7ec9d18fb283d1f84a3a3eff3b7a72b09a10c9c006597b3fbabbb5958420a87d"
+                }
+            ],
+            "cleanup": [
+                "/include",
+                "*.la",
+                "*.a",
+                "/lib/pkgconfig",
+                "/share/gtk-doc"
+            ]
+        },
+        {
+            "name": "libgit2",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DBUILD_EXAMPLES=OFF",
+                "-DBUILD_TESTS=OFF",
+                "-DUSE_SSH=ON"
+            ],
+             "modules": [
+                {
+                    "name": "libssh2",
+                    "cleanup": [ "/bin" ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/libssh2/libssh2/releases/download/libssh2-1.11.0/libssh2-1.11.0.tar.bz2",
+                            "sha256": "e56d81f01f090d3c6eaf5f56c645610fd1a90d92819541d0079ae363d1eed11e"
+                        }
+                    ]
+                }
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/libgit2/libgit2/archive/refs/tags/v1.7.1.tar.gz",
+                    "sha256": "17d2b292f21be3892b704dddff29327b3564f96099a1c53b00edc23160c71327"
+                }
+            ],
+            "cleanup": [
+                "/include",
+                "*.la",
+                "*.a",
+                "/lib/cmake",
+                "/lib/pkgconfig"
             ]
         },
         {
@@ -230,7 +286,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/FFMS/ffms2.git",
-                    "commit": "a8ed11c21eea1f2ba4c84d1ea0d2cadcc8ae9422"
+                    "commit": "f20827cf280b669321cd5b62e01d744bc68c21fc"
                 }
             ]
         },
@@ -263,6 +319,53 @@
                 }
             ]
         },
+        {
+            "name": "libxisf",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DUSE_BUNDLED_ZLIB=OFF"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitea.nouspiro.space/nou/libXISF.git",
+                    "tag": "v0.2.13",
+                    "commit": "bfba76a39d2651719228841503b3a84cc5820362"
+                }
+            ],
+            "cleanup": [
+                "/include",
+                "*.la",
+                "*.a",
+                "/lib/cmake",
+                "/lib/pkgconfig"
+            ],
+             "modules": [
+                {
+                    "name": "pugixml",
+                    "buildsystem": "cmake-ninja",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/zeux/pugixml/releases/download/v1.14/pugixml-1.14.tar.gz",
+                            "sha256": "2f10e276870c64b1db6809050a75e11a897a8d7456c4be5c6b2e35a11168a015"
+                        }
+                    ]
+                },
+                {
+                    "name": "zstd",
+                    "buildsystem": "cmake-ninja",
+                    "subdir": "build/cmake",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/facebook/zstd/releases/download/v1.5.6/zstd-1.5.6.tar.gz",
+                            "sha256": "8c29e06cf42aacc1eafc4077ae2ec6c6fcb96a626157e0593d5e82a34fd403c1"
+                        }
+                    ]
+                }
+            ]
+        },
         "shared-modules/intltool/intltool-0.51.json",
         {
             "name": "siril",
@@ -271,8 +374,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.com/free-astro/siril.git",
-                    "tag": "1.2.6",
-                    "commit": "9f297f9563bf09007617dc6e28b7da96a1d8cff1"
+                    "tag": "1.4.0-beta1",
+                    "commit": "a8df371fb827fa07e55d61b5bc039618bf4014bd"
                 }
             ]
         }
