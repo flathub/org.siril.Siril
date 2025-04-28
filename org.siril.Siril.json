@@ -16,7 +16,7 @@
         "--socket=wayland",
         "--filesystem=host",
         /* For spawning OS-native processes */
-        /*"--talk-name=org.freedesktop.Flatpak", */
+        "--talk-name=org.freedesktop.Flatpak",
         /* Needed for gvfs to work */
         "--talk-name=org.gtk.vfs.*",
         "--filesystem=xdg-run/gvfs",
