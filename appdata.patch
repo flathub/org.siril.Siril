@@ -1,0 +1,14 @@
+diff --git a/platform-specific/linux/org.siril.Siril.appdata.xml b/platform-specific/linux/org.siril.Siril.appdata.xml
+index 982196059..6ec0d46ce 100644
+--- a/platform-specific/linux/org.siril.Siril.appdata.xml
++++ b/platform-specific/linux/org.siril.Siril.appdata.xml
+@@ -143,9 +143,7 @@
+           </li>
+         </ul>
+       </description>
+-
+     </release>
+-  <releases>
+     <release version="1.4.0-beta1" date="2025-04-26">
+       <url type="details">https://siril.org/download/1.4.0-beta1</url>
+       <description>
