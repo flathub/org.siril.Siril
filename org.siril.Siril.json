@@ -221,8 +221,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/opencv/opencv/archive/4.10.0.zip",
-                    "sha256": "3810bca2b1d1c572912df0ac3888126341f3762dfd28e91068c805fb656d0e51"
+                    "url": "https://github.com/opencv/opencv/archive/refs/tags/4.12.0.zip",
+                    "sha256": "fa3faf7581f1fa943c9e670cf57dd6ba1c5b4178f363a188a2c8bff1eb28b7e4"
                 }
             ]
         },
@@ -374,6 +374,10 @@
                     "url": "https://gitlab.com/free-astro/siril.git",
                     "tag": "1.4.0-beta3",
                     "commit": "7d0a3c06aa08c2d9f5107dbdedb75fa1e7ef6719"
+                },
+                {
+                    "type": "patch",
+                    "path": "opencv.patch"
                 }
             ]
         }
