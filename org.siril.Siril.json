@@ -372,12 +372,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.com/free-astro/siril.git",
-                    "tag": "1.4.0-beta3",
-                    "commit": "7d0a3c06aa08c2d9f5107dbdedb75fa1e7ef6719"
-                },
-                {
-                    "type": "patch",
-                    "path": "opencv.patch"
+                    "tag": "1.4.0-beta4",
+                    "commit": "51c5e1d0bca8114dc43282fd05d710dd07bf4a93"
                 }
             ]
         }
