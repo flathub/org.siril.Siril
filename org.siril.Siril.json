@@ -546,19 +546,12 @@
         {
             "name": "siril",
             "buildsystem": "meson",
-            "config-opts": [
-                "--buildtype=release",
-                "-Dflatpak-id=${FLATPAK_ID}"
-            ],
-            "post-install": [
-                "sed -i s/text-x-seq/${FLATPAK_ID}.text-x-seq/ ${FLATPAK_DEST}/share/mime/packages/siril.xml",
-                "mv ${FLATPAK_DEST}/share/mime/packages/siril.xml ${FLATPAK_DEST}/share/mime/packages/${FLATPAK_ID}.xml",
-                "mv ${FLATPAK_DEST}/share/icons/hicolor/scalable/mimetypes/text-x-seq.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/mimetypes/${FLATPAK_ID}.text-x-seq.svg"
-            ],
             "sources": [
                 {
-                    "type": "dir",
-                    "path": "../.."
+                    "type": "git",
+                    "url": "https://gitlab.com/free-astro/siril.git",
+                    "tag": "1.4.0-rc1",
+                    "commit": "94f5577c190a68819d4821058a69b9a677ea49c8"
                 }
             ]
         }
