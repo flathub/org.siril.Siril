@@ -497,7 +497,7 @@
         },
         {
             "name": "libxisf",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DUSE_BUNDLED_ZLIB=OFF"
             ],
@@ -505,7 +505,8 @@
                 {
                     "type": "git",
                     "url": "https://gitea.nouspiro.space/nou/libXISF.git",
-                    "branch": "master"
+                    "tag": "v0.2.13",
+                    "commit": "bfba76a39d2651719228841503b3a84cc5820362"
                 }
             ],
             "cleanup": [
