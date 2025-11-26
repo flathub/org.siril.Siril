@@ -1,0 +1,67 @@
+diff --git a/src/io/siril_pythonmodule.c b/src/io/siril_pythonmodule.c
+index 8ab96de72..5dbe0cd90 100644
+--- a/src/io/siril_pythonmodule.c
++++ b/src/io/siril_pythonmodule.c
+@@ -5,6 +5,8 @@
+ 
+ #include <glib.h>
+ #include <gio/gio.h>
++
++#include "core/siril_spawn.h"
+ #ifdef _WIN32
+ #include <windows.h>
+ #include <gio/gwin32inputstream.h>
+@@ -1431,7 +1433,7 @@ gchar* get_venv_python_version(const gchar* venv_path) {
+ 	gchar* output = NULL;
+ 	gint status;
+ 
+-	g_spawn_sync(NULL, argv, NULL, G_SPAWN_SEARCH_PATH,
++	siril_spawn_host_sync(NULL, argv, NULL, G_SPAWN_SEARCH_PATH,
+ 				NULL, NULL, &output, NULL, &status, NULL);
+ 
+ 	g_free(python_path);
+@@ -1771,7 +1773,7 @@ static version_number get_installed_module_version(const gchar* python_path, GEr
+ 
+ 	// Execute pip show command
+ 	GError *spawn_error = NULL;
+-	if (!g_spawn_sync(NULL,  // Working directory (NULL = current)
++	if (!siril_spawn_host_sync(NULL,  // Working directory (NULL = current)
+ 					argv,
+ 					NULL,  // Environment variables (NULL = inherit)
+ 					G_SPAWN_SEARCH_PATH,
+@@ -1960,7 +1962,7 @@ gboolean install_module_with_pip(const gchar* module_path, const gchar* user_mod
+ 				"sirilpy",
+ 				NULL  // Array must be NULL-terminated
+ 			};
+-			if (!g_spawn_sync(
++			if (!siril_spawn_host_sync(
+ 					NULL,           // working_directory (NULL = inherit current)
+ 					argv,           // argument vector
+ 					NULL,           // inherit parent's environment
+@@ -2020,7 +2022,7 @@ gboolean install_module_with_pip(const gchar* module_path, const gchar* user_mod
+ 		gint exit_status;
+ 		GError *spawn_error = NULL;
+ 
+-		if (!g_spawn_sync(
++		if (!siril_spawn_host_sync(
+ 				NULL,           // working_directory (NULL = inherit current)
+ 				argv,           // argument vector
+ 				NULL,           // inherit parent's environment
+@@ -2062,7 +2064,7 @@ gboolean get_python_magic_number(char *out_buf, gsize out_buf_size) {
+ 	gchar *stdout_str = NULL;
+ 	gint exit_status = 0;
+ 
+-	gboolean success = g_spawn_sync(
++	gboolean success = siril_spawn_host_sync(
+ 		NULL,       // working directory
+ 		argv,
+ 		NULL,       // env
+@@ -2282,7 +2284,7 @@ static gboolean check_or_create_venv(const gchar *project_path, GError **error)
+         gchar *std_err = NULL;
+         gint exit_status;
+ 
+-        if (!g_spawn_sync(NULL, argv, NULL,
++        if (!siril_spawn_host_sync(NULL, argv, NULL,
+                           G_SPAWN_SEARCH_PATH,
+                           NULL, NULL,
+                           &std_out, &std_err,
