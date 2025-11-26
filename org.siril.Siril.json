@@ -454,6 +454,10 @@
                     "url": "https://gitlab.com/free-astro/siril.git",
                     "tag": "1.4.0-rc2",
                     "commit": "b408157f652e0866a78e3a74525daa957553c347"
+                },
+                {
+                    "type": "patch",
+                    "path": "fix_flatpak.patch"
                 }
             ]
         }

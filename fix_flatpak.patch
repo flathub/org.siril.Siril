@@ -1,0 +1,12 @@
+diff --git a/src/io/siril_pythonmodule.c b/src/io/siril_pythonmodule.c
+index 8ab96de72..63a40b827 100644
+--- a/src/io/siril_pythonmodule.c
++++ b/src/io/siril_pythonmodule.c
+@@ -2013,6 +2013,7 @@ gboolean install_module_with_pip(const gchar* module_path, const gchar* user_mod
+ 			"-m",
+ 			"pip",
+ 			"install",
++			"--no-cache-dir",
+ 			arg_module_path,
+ 			NULL  // Array must be NULL-terminated
+ 		};
