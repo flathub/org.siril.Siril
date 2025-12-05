@@ -457,7 +457,7 @@
                 },
                 {
                     "type": "patch",
-                    "path": "appdata.patch
+                    "path": "appdata.patch"
                 }
             ]
         }
