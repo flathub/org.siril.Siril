@@ -4,7 +4,6 @@
     "runtime-version": "49",
     "sdk": "org.gnome.Sdk",
     "command": "siril",
-    "rename-icon": "org.siril.Siril",
     "rename-mime-file": "siril.xml",
     "rename-mime-icons": [
         "text-x-seq"
