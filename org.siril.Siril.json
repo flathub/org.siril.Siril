@@ -20,6 +20,15 @@
         "--filesystem=xdg-run/gvfs",
         "--filesystem=xdg-run/gvfsd"
     ],
+    "cleanup": [
+        "/lib/pkgconfig",
+        "/lib/cmake",
+        "/man",
+        "/include",
+        "/share/man",
+        "*.la",
+        "*.a"
+    ],
     "modules": [
         {
         "name": "tcl",
@@ -248,6 +257,7 @@
             ],
             "cleanup": [
                 "/include",
+                "/share/doc",
                 "*.a",
                 "*.la",
                 "/lib/pkgconfig"
