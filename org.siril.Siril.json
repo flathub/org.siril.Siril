@@ -4,7 +4,6 @@
     "runtime-version": "49",
     "sdk": "org.gnome.Sdk",
     "command": "siril",
-    "rename-icon": "org.siril.Siril",
     "rename-mime-file": "siril.xml",
     "rename-mime-icons": [
         "text-x-seq"
@@ -19,6 +18,15 @@
         "--talk-name=org.gtk.vfs.*",
         "--filesystem=xdg-run/gvfs",
         "--filesystem=xdg-run/gvfsd"
+    ],
+    "cleanup": [
+        "/lib/pkgconfig",
+        "/lib/cmake",
+        "/man",
+        "/include",
+        "/share/man",
+        "*.la",
+        "*.a"
     ],
     "modules": [
         {
@@ -248,6 +256,7 @@
             ],
             "cleanup": [
                 "/include",
+                "/share/doc",
                 "*.a",
                 "*.la",
                 "/lib/pkgconfig"
