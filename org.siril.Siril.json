@@ -30,56 +30,21 @@
     ],
     "modules": [
         {
-        "name": "tcl",
-        "subdir": "unix",
-        "cleanup": [
-            "/bin"
-        ],
-        "post-install": [
-            "chmod u+w ${FLATPAK_DEST}/lib/libtcl*.so"
-        ],
-        "sources": [
-            {
-            "type": "archive",
-            "url": "https://prdownloads.sourceforge.net/tcl/tcl8.6.16-src.tar.gz",
-            "sha256": "91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5"
-            }
-        ]
-        },
-        {
-        "name": "python3.13",
-        "config-opts": [
-            "--enable-shared",
-            "--prefix=/app",
-            "--with-ensurepip=install"
-
-        ],
-        "post-install": [
-        "ln -svf ${FLATPAK_DEST}/bin/python3 ${FLATPAK_DEST}/bin/python",
-        "echo '/app/lib' > ${FLATPAK_DEST}/lib/python3.13/site-packages/flatpak-python.pth"
-        ],
-        "sources": [
-            {
-            "type": "archive",
-            "url": "https://www.python.org/ftp/python/3.13.5/Python-3.13.5.tar.xz",
-            "sha256": "93e583f243454e6e9e4588ca2c2662206ad961659863277afcdb96801647d640"
-            }
-        ]
-        },
-        {
-        "name": "python-setuptools",
-        "buildsystem": "simple",
-        "build-commands": [
-            "/app/bin/python3 setup.py build",
-            "/app/bin/python3 setup.py install --prefix=/app"
-        ],
-        "sources": [
-            {
-            "type": "archive",
-            "url": "https://pypi.org/packages/source/s/setuptools/setuptools-69.0.3.tar.gz",
-            "sha256": "be1af57fc409f93647f2e8e4573a142ed38724b8cdd389706a867bb4efcf1e78"
-            }
-        ]
+            "name": "tcl",
+            "subdir": "unix",
+            "cleanup": [
+                "/bin"
+            ],
+            "post-install": [
+                "chmod u+w ${FLATPAK_DEST}/lib/libtcl*.so"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://prdownloads.sourceforge.net/tcl/tcl8.6.16-src.tar.gz",
+                    "sha256": "91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5"
+                }
+            ]
         },
         {
             "name": "inih",
@@ -380,33 +345,6 @@
             ]
         },
         {
-            "name" : "libheif",
-            "buildsystem": "cmake",
-            "config-opts": [ "-DWITH_GDK_PIXBUF=OFF" ],
-            "cleanup": [ "/bin" ],
-            "modules": [
-                {
-                    "name": "libde265",
-                    "config-opts": [ "--disable-sherlock265" ],
-                    "cleanup": [ "/bin" ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://github.com/strukturag/libde265/releases/download/v1.0.14/libde265-1.0.14.tar.gz",
-                            "sha256": "99f46ef77a438be639aa3c5d9632c0670541c5ed5d386524d4199da2d30df28f"
-                        }
-                    ]
-                }
-            ],
-            "sources" : [
-                {
-                    "url" : "https://github.com/strukturag/libheif/releases/download/v1.17.5/libheif-1.17.5.tar.gz",
-                    "sha256" : "38ab01938ef419dbebb98346dc0b1c8bb503a0449ea61a0e409a988786c2af5b",
-                    "type" : "archive"
-                }
-            ]
-        },
-        {
             "name": "libxisf",
             "buildsystem": "cmake-ninja",
             "config-opts": [
@@ -436,18 +374,6 @@
                             "type": "archive",
                             "url": "https://github.com/zeux/pugixml/releases/download/v1.14/pugixml-1.14.tar.gz",
                             "sha256": "2f10e276870c64b1db6809050a75e11a897a8d7456c4be5c6b2e35a11168a015"
-                        }
-                    ]
-                },
-                {
-                    "name": "zstd",
-                    "buildsystem": "cmake-ninja",
-                    "subdir": "build/cmake",
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://github.com/facebook/zstd/releases/download/v1.5.6/zstd-1.5.6.tar.gz",
-                            "sha256": "8c29e06cf42aacc1eafc4077ae2ec6c6fcb96a626157e0593d5e82a34fd403c1"
                         }
                     ]
                 }
