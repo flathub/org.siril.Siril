@@ -387,12 +387,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.com/free-astro/siril.git",
-                    "tag": "1.4.2",
-                    "commit": "051600402c52ddb92d18350f074f758e6c46a354"
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Update-appdata.patch"
+                    "tag": "1.4.3",
+                    "commit": "08a827bfb7382445c1db4b0741dd4a8fbb7f3515"
                 }
             ]
         }
