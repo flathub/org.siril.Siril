@@ -1,7 +1,7 @@
 {
     "app-id": "org.siril.Siril",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "49",
+    "runtime-version": "50",
     "sdk": "org.gnome.Sdk",
     "command": "siril",
     "rename-mime-file": "siril.xml",
@@ -20,10 +20,14 @@
         "--filesystem=xdg-run/gvfsd"
     ],
     "cleanup": [
-        "/lib/pkgconfig",
-        "/lib/cmake",
-        "/man",
         "/include",
+        "/lib/cmake",
+        "/lib/pkgconfig",
+        "/man",
+        "/share/aclocal",
+        "/share/doc",
+        "/share/gtk-doc",
+        "/share/info",
         "/share/man",
         "*.la",
         "*.a"
@@ -84,8 +88,7 @@
             "buildsystem": "cmake-ninja",
             "builddir": true,
             "cleanup": [
-                "/bin",
-                "/include"
+                "/bin"
             ],
             "config-opts": [
                 "-DUSE_PTHREADS=ON",
@@ -137,12 +140,8 @@
                 "--enable-reentrant",
                 "CFLAGS=-std=c99"
             ],
-            "make-args": ["shared"],
-            "cleanup": [
-                "/include",
-                "*.a",
-                "*.la",
-                "/lib/pkgconfig"
+            "make-args": [
+                "shared"
             ],
             "sources": [
                 {
@@ -166,13 +165,6 @@
                     "url": "https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.4.tar.xz",
                     "sha256": "7ec9d18fb283d1f84a3a3eff3b7a72b09a10c9c006597b3fbabbb5958420a87d"
                 }
-            ],
-            "cleanup": [
-                "/include",
-                "*.la",
-                "*.a",
-                "/lib/pkgconfig",
-                "/share/gtk-doc"
             ]
         },
         {
@@ -183,10 +175,12 @@
                 "-DBUILD_TESTS=OFF",
                 "-DUSE_SSH=ON"
             ],
-             "modules": [
+            "modules": [
                 {
                     "name": "libssh2",
-                    "cleanup": [ "/bin" ],
+                    "cleanup": [
+                        "/bin"
+                    ],
                     "sources": [
                         {
                             "type": "archive",
@@ -202,13 +196,6 @@
                     "url": "https://github.com/libgit2/libgit2/archive/refs/tags/v1.7.1.tar.gz",
                     "sha256": "17d2b292f21be3892b704dddff29327b3564f96099a1c53b00edc23160c71327"
                 }
-            ],
-            "cleanup": [
-                "/include",
-                "*.la",
-                "*.a",
-                "/lib/cmake",
-                "/lib/pkgconfig"
             ]
         },
         {
@@ -219,17 +206,13 @@
                 "--without-cfitsio",
                 "--disable-fortran"
             ],
-            "cleanup": [
-                "/include",
-                "/share/doc",
-                "*.a",
-                "*.la",
-                "/lib/pkgconfig"
-            ],
             "sources": [
                 {
                     "type": "archive",
                     "url": "https://www.atnf.csiro.au/computing/software/wcs/wcslib-releases/wcslib-8.3.tar.bz2",
+                    "mirror-urls": [
+                        "https://ftp.eso.org/pub/dfs/pipelines/libraries/wcslib/wcslib-8.3.tar.bz2"
+                    ],
                     "sha256": "431ea3417927bbc02b89bfa3415dc0b4668b0f21a3b46fb8a3525e2fcf614508"
                 }
             ]
@@ -240,28 +223,21 @@
                 "--enable-shared",
                 "--disable-static"
             ],
+            "cleanup": [
+                "/bin"
+            ],
             "sources": [
                 {
                     "type": "archive",
                     "url": "https://mirrors.ibiblio.org/gnu/gsl/gsl-2.7.1.tar.gz",
                     "sha256": "dcb0fbd43048832b757ff9942691a8dd70026d5da0ff85601e52687f6deeb34b"
                 }
-            ],
-            "cleanup": [
-                "/bin",
-                "/include",
-                "/lib/pkgconfig",
-                "*.a",
-                "*.la",
-                "/share/aclocal",
-                "/share/info",
-                "/share/man"
             ]
         },
         {
             "name": "fftw3",
             "buildsystem": "autotools",
-             "build-options": {
+            "build-options": {
                 "arch": {
                     "x86_64": {
                         "config-opts": [
@@ -283,22 +259,15 @@
                 "--enable-openmp",
                 "--disable-fortran"
             ],
+            "cleanup": [
+                "/bin"
+            ],
             "sources": [
                 {
                     "type": "archive",
                     "url": "http://fftw.org/fftw-3.3.10.tar.gz",
                     "sha256": "56c932549852cddcfafdab3820b0200c7742675be92179e59e6215b340e26467"
                 }
-            ],
-            "cleanup": [
-                "/bin",
-                "/include",
-                "*.a",
-                "*.la",
-                "/lib/cmake",
-                "/lib/pkgconfig",
-                "/share/info",
-                "/share/man"
             ]
         },
         {
@@ -312,7 +281,6 @@
                 "--enable-lcms",
                 "--enable-openmp"
             ],
-            "cleanup": [ "/share/doc" ],
             "sources": [
                 {
                     "type": "git",
@@ -321,7 +289,9 @@
                 },
                 {
                     "type": "shell",
-                    "commands": [ "autoreconf -vfi" ]
+                    "commands": [
+                        "autoreconf -vfi"
+                    ]
                 }
             ]
         },
@@ -331,10 +301,6 @@
                 "--with-pic",
                 "--disable-static",
                 "--enable-shared"
-            ],
-            "cleanup": [
-                "/include",
-                "/lib/pkgconfig"
             ],
             "sources": [
                 {
@@ -358,14 +324,7 @@
                     "commit": "bfba76a39d2651719228841503b3a84cc5820362"
                 }
             ],
-            "cleanup": [
-                "/include",
-                "*.la",
-                "*.a",
-                "/lib/cmake",
-                "/lib/pkgconfig"
-            ],
-             "modules": [
+            "modules": [
                 {
                     "name": "pugixml",
                     "buildsystem": "cmake",
