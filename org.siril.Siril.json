@@ -346,8 +346,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.com/free-astro/siril.git",
-                    "tag": "1.4.4",
-                    "commit": "e89421cddc55f671f8132741441fc0d5ecc7aaf4"
+                    "tag": "1.4.5",
+                    "commit": "93542673a7fe66c1eae5aabc0e1a8fd77838aada"
                 }
             ]
         }
